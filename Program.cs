@@ -188,7 +188,15 @@ namespace TextAdventureCS
 
                 Console.WriteLine("###############");
                 Console.WriteLine("{Health : {0}", Health);
+                Console.WriteLine("Stamina : {0}");
                 Console.WriteLine("###############");
+
+                Console.WriteLine("***************");
+                Console.WriteLine("Press (i) to open inventory...");
+                Console.WriteLine("Weapon : {0}   (+{1}) Damage");
+                Console.WriteLine("Armor  : {0}   (+{1}) health");
+                Console.WriteLine("***************");
+
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
             //return choice;
