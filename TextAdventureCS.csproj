@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Actor.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Locations\Bridge.cs" />
     <Compile Include="Locations\Forest.cs" />
     <Compile Include="Locations\MainRoad.cs" />
     <Compile Include="Map.cs" />
