@@ -83,19 +83,19 @@ namespace TextAdventureCS
         static void Welcome(ref Player player)
         {
             Console.Clear();
-            Console.WriteLine("Welcome to the world of Flightwood");
-            Console.WriteLine("You just woke up from a very long sleep.");
-            Console.WriteLine("You can't really remember anything but your name.");
-            Console.WriteLine("Which by the way is {0}", player.GetName());
+            Console.WriteLine("You wake up in a forest...");
+            Console.WriteLine("You look around...");
+            Console.WriteLine("But all you can see is a dim light on the top hill...");
+            Console.WriteLine("You decide to walk towards the light...");
             
             // Added newline to improve readability.
             Console.WriteLine();
 
             player.ShowInventory();
-            Console.WriteLine("You look around you and realise that you are in a forest.");
-            Console.WriteLine("In the distance you hear the howl of an animal.");
-            Console.WriteLine("You slowly come to your senses and choose to go.");
-            Console.WriteLine("Press a key to continue..");
+            Console.WriteLine("In the process of walking to the top of the hill you see a Small old Rune.");
+            Console.WriteLine("As you approach the entry you are shocked to see a pair of glinstering red eyes stare at you.");
+            Console.WriteLine("As you get closer to the entry the creature screeshes and runs off into the ruin..");
+            Console.WriteLine("Do you want to follow the creature into the ruin? (y/n)");
             Console.ReadKey();
         }
 
