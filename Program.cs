@@ -104,7 +104,8 @@ namespace TextAdventureCS
             // Add locations with their coordinates to this list.
             Forrest forrest = new Forrest("Black Forrest");
             map.AddLocation(forrest, 0, 2);
-            
+            MainRoad mainroad = new MainRoad("Main Road");
+            map.AddLocation(mainroad, 0, 0);
         }
 
         static void Start(ref Map map, ref Player player)
