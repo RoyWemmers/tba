@@ -38,9 +38,9 @@ namespace TextAdventureCS
         static void Main(string[] args)
         {
             // General initializations to prevent magic numbers
-            int mapwidth = 4;
-            int mapheight = 4;
-            int xstartpos = 8;
+            int mapwidth = 8;
+            int mapheight = 8;
+            int xstartpos = 1;
             int ystartpos = 1;
             // Welcome the player
             Console.WriteLine("Welcome to a textbased adventure");
@@ -103,9 +103,9 @@ namespace TextAdventureCS
         {
             // Add locations with their coordinates to this list.
             Forrest forrest = new Forrest("Black Forrest");
-            map.AddLocation(forrest, 0, 2);
+            map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
-            map.AddLocation(mainroad, 1, 1);
+            map.AddLocation(mainroad, 1, 2);
         }
 
         static void Start(ref Map map, ref Player player)
