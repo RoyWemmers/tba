@@ -14,8 +14,10 @@ namespace TextAdventureCS
         }
         public override void Description()
         {
-            // Insert a nice description
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("You are on the Main Road");
+            Console.WriteLine();
         }
 
     }

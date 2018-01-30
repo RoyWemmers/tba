@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 // Originally made by Sietse Dijks
 // Releasedate: 18-01-2014
@@ -55,6 +56,7 @@ namespace TextAdventureCS
             {
                 if( input == null || input == "N" )
                 {
+                    Console.Clear();
                     Console.WriteLine("Please enter your name and press enter:");
                     name = Console.ReadLine();
                 }
@@ -66,7 +68,7 @@ namespace TextAdventureCS
             }           
 
             // Make the player
-            Player player = new Player(name, 100);
+            Player player = new Player(name, 100, 100);
             //Welcome the player
             Welcome(ref player);
 
@@ -82,30 +84,41 @@ namespace TextAdventureCS
 
         static void Welcome(ref Player player)
         {
+            int sleep = 0;
             Console.Clear();
             Console.WriteLine("You wake up in a forest...");
+            Thread.Sleep(sleep);
             Console.WriteLine("You look around...");
+            Thread.Sleep(sleep);
             Console.WriteLine("But all you can see is a dim light on the top hill...");
+            Thread.Sleep(sleep);
             Console.WriteLine("You decide to walk towards the light...");
-            
-            // Added newline to improve readability.
-            Console.WriteLine();
+            Thread.Sleep(sleep);
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
+            Console.Clear();
 
+            // Added newline to improve readability.
             player.ShowInventory();
             Console.WriteLine("In the process of walking to the top of the hill you see a Small old Rune.");
+            Thread.Sleep(sleep);
             Console.WriteLine("As you approach the entry you are shocked to see a pair of glinstering red eyes stare at you.");
+            Thread.Sleep(sleep);
             Console.WriteLine("As you get closer to the entry the creature screeshes and runs off into the ruin..");
+            Thread.Sleep(sleep);
             Console.WriteLine("Do you want to follow the creature into the ruin? (y/n)");
+            Thread.Sleep(sleep);
             Console.ReadKey();
         }
 
         static void InitMap(ref Map map)
         {
             // Add locations with their coordinates to this list.
-            Forrest forrest = new Forrest("Black Forrest");
+            Forrest forrest = new Forrest("Forrest");
             map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
             map.AddLocation(mainroad, 2, 1);
+            map.AddLocation(mainroad, 4, 1);
             Bridge bridge = new Bridge("Bridge");
             map.AddLocation(bridge, 3, 1);
         }
@@ -120,7 +133,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems);
+                choice = ShowMenu(map, ref menuItems, ref player);
 
                 if ( choice != menuItems.Count() )
                 {
@@ -150,7 +163,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu)
+        static int ShowMenu(Map map, ref List<string> menu, ref Player player)
         {
             int choice;
             string input;
@@ -190,7 +203,7 @@ namespace TextAdventureCS
                     Console.WriteLine("{0} - {1}", i + 1, menu[i]);
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
-                HealthUI();
+                HealthUI(player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina());
                 input = Console.ReadLine();
 
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
@@ -221,21 +234,37 @@ namespace TextAdventureCS
             Console.ReadKey();
         }
 
-        static void HealthUI()
+        static void HealthUI(int health, int maxHealth, int stamina, int maxStamina)
         {
-            int health = 100;
-            Console.WriteLine("###############");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("##############################");
 
-            Console.Write("Health: ");
-            for (int i = 0; i < health; i += 10)
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("{0, -3}","Health: ");  
+            for (int i = 0; i < health; i += (health / 10))
             {
                 Console.Write("=");
             }
-            Console.Write("{0,-5}", "");
-            Console.WriteLine(" {0, 5}/100", health);
-            Console.WriteLine("Stamina : {0}");
-            Console.WriteLine("###############");
+            Console.Write("{0,-3}", "");
+            Console.WriteLine(" {0}/{1}", health, maxHealth);
 
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("{0, -3}", "Stamina: ");
+            for (int i = 0; i < stamina; i += (stamina / 10))
+            {
+                Console.Write("=");
+            }
+            Console.Write("{0,-3}", "");
+            Console.WriteLine(" {0}/{1}", stamina, maxStamina);
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("##############################");
+
+           
+        }
+
+        static void FightUI()
+        {
             Console.WriteLine("***************");
             Console.WriteLine("Press (i) to open inventory...");
             Console.WriteLine("Weapon : {0}   (+{1}) Damage");

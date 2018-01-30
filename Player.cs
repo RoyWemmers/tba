@@ -9,8 +9,8 @@ namespace TextAdventureCS
     {
         private Dictionary<string, Objects> inventory;
 
-        public Player(string name, int maxHealth)
-            : base(name, maxHealth)
+        public Player(string name, int maxHealth, int maxStamina)
+            : base(name, maxHealth, maxStamina)
         {
             inventory = new Dictionary<string, Objects>();
         }
