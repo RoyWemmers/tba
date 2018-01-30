@@ -38,8 +38,8 @@ namespace TextAdventureCS
         static void Main(string[] args)
         {
             // General initializations to prevent magic numbers
-            int mapwidth = 4;
-            int mapheight = 4;
+            int mapwidth = 8;
+            int mapheight = 8;
             int xstartpos = 1;
             int ystartpos = 1;
             // Welcome the player
@@ -103,9 +103,9 @@ namespace TextAdventureCS
         {
             // Add locations with their coordinates to this list.
             Forrest forrest = new Forrest("Black Forrest");
-            map.AddLocation(forrest, 0, 2);
+            map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
-            map.AddLocation(mainroad, 1, 1);
+            map.AddLocation(mainroad, 2, 1);
         }
 
         static void Start(ref Map map, ref Player player)
@@ -184,6 +184,7 @@ namespace TextAdventureCS
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
                 input = Console.ReadLine();
+                Console.Clear();
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
             //return choice;
