@@ -106,7 +106,8 @@ namespace TextAdventureCS
             map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
             map.AddLocation(mainroad, 2, 1);
-       
+            Bridge bridge = new Bridge("Bridge");
+            map.AddLocation(bridge, 3, 1);
         }
 
         static void Start(ref Map map, ref Player player)
@@ -151,6 +152,7 @@ namespace TextAdventureCS
         // This Method builds the menu
         static int ShowMenu(Map map, ref List<string> menu)
         {
+            int health = 300;
             int choice;
             string input;
 
@@ -175,6 +177,11 @@ namespace TextAdventureCS
                 menu.Add( ACTION_FIGHT );
                 menu.Add( ACTION_RUN );
             }
+            if(map.GetLocation().IsBridge())
+            {
+                menu.Add("Fight the Blood Drake");
+                menu.Add("Go via the side of the bridge");
+            }
             menu.Add( ACTION_QUIT );
 
             do
@@ -185,9 +192,8 @@ namespace TextAdventureCS
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
                 input = Console.ReadLine();
-
                 Console.WriteLine("###############");
-                Console.WriteLine("{Health : {0}", Health);
+                Console.WriteLine("Health : {0}", health);
                 Console.WriteLine("###############");
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
