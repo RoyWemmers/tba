@@ -40,7 +40,7 @@ namespace TextAdventureCS
             // General initializations to prevent magic numbers
             int mapwidth = 4;
             int mapheight = 4;
-            int xstartpos = 1;
+            int xstartpos = 8;
             int ystartpos = 1;
             // Welcome the player
             Console.WriteLine("Welcome to a textbased adventure");
