@@ -184,6 +184,8 @@ namespace TextAdventureCS
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
                 input = Console.ReadLine();
+
+
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
             //return choice;
