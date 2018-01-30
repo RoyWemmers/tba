@@ -118,7 +118,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems);
+                choice = ShowMenu(health, map, ref menuItems);
 
                 if ( choice != menuItems.Count() )
                 {
