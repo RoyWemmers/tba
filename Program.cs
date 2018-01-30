@@ -40,8 +40,8 @@ namespace TextAdventureCS
             // General initializations to prevent magic numbers
             int mapwidth = 4;
             int mapheight = 4;
-            int xstartpos = 2;
-            int ystartpos = 0;
+            int xstartpos = 1;
+            int ystartpos = 1;
             // Welcome the player
             Console.WriteLine("Welcome to a textbased adventure");
             Console.WriteLine("Before you can start your journey, you will have to enter your name.");
@@ -105,7 +105,7 @@ namespace TextAdventureCS
             Forrest forrest = new Forrest("Black Forrest");
             map.AddLocation(forrest, 0, 2);
             MainRoad mainroad = new MainRoad("Main Road");
-            map.AddLocation(mainroad, 0, 0);
+            map.AddLocation(mainroad, 1, 1);
         }
 
         static void Start(ref Map map, ref Player player)
@@ -118,7 +118,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(health, map, ref menuItems);
+                choice = ShowMenu(map, ref menuItems);
 
                 if ( choice != menuItems.Count() )
                 {
@@ -148,7 +148,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Actor Health, Map map, ref List<string> menu)
+        static int ShowMenu(Map map, ref List<string> menu)
         {
             int choice;
             string input;
@@ -184,10 +184,6 @@ namespace TextAdventureCS
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
                 input = Console.ReadLine();
-
-                Console.WriteLine("###############");
-                Console.WriteLine("{Health : {0}", Health);
-                Console.WriteLine("###############");
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
             //return choice;
