@@ -106,7 +106,8 @@ namespace TextAdventureCS
             map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
             map.AddLocation(mainroad, 2, 1);
-       
+            Bridge bridge = new Bridge("Bridge");
+            map.AddLocation(bridge, 3, 1);
         }
 
         static void Start(ref Map map, ref Player player)
@@ -175,27 +176,22 @@ namespace TextAdventureCS
                 menu.Add( ACTION_FIGHT );
                 menu.Add( ACTION_RUN );
             }
+            if(map.GetLocation().IsBridge())
+            {
+                menu.Add("Fight the Blood Drake");
+                menu.Add("Go via the side of the bridge");
+            }
             menu.Add( ACTION_QUIT );
 
             do
             {
                 for (int i = 0; i < menu.Count(); i++)
-                {
+                {                       
                     Console.WriteLine("{0} - {1}", i + 1, menu[i]);
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
+                HealthUI();
                 input = Console.ReadLine();
-
-                Console.WriteLine("###############");
-                Console.WriteLine("{Health : {0}", Health);
-                Console.WriteLine("Stamina : {0}");
-                Console.WriteLine("###############");
-
-                Console.WriteLine("***************");
-                Console.WriteLine("Press (i) to open inventory...");
-                Console.WriteLine("Weapon : {0}   (+{1}) Damage");
-                Console.WriteLine("Armor  : {0}   (+{1}) health");
-                Console.WriteLine("***************");
 
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
@@ -223,6 +219,28 @@ namespace TextAdventureCS
             Console.WriteLine("Thank you for playing and have a nice day!");
             Console.WriteLine("Press a key to exit...");
             Console.ReadKey();
+        }
+
+        static void HealthUI()
+        {
+            int health = 100;
+            Console.WriteLine("###############");
+
+            Console.Write("Health: ");
+            for (int i = 0; i < health; i += 10)
+            {
+                Console.Write("=");
+            }
+            Console.Write("{0,-5}", "");
+            Console.WriteLine(" {0, 5}/100", health);
+            Console.WriteLine("Stamina : {0}");
+            Console.WriteLine("###############");
+
+            Console.WriteLine("***************");
+            Console.WriteLine("Press (i) to open inventory...");
+            Console.WriteLine("Weapon : {0}   (+{1}) Damage");
+            Console.WriteLine("Armor  : {0}   (+{1}) health");
+            Console.WriteLine("***************");
         }
     }
 }
