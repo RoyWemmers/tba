@@ -106,6 +106,7 @@ namespace TextAdventureCS
             map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
             map.AddLocation(mainroad, 2, 1);
+       
         }
 
         static void Start(ref Map map, ref Player player)
