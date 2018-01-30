@@ -33,3 +33,7 @@ C:\Users\D252337\Dropbox\School\Radius\lj1\p3\Project\TextBasedAdventure\tba\obj
 C:\Users\D252337\Dropbox\School\Radius\lj1\p3\Project\TextBasedAdventure\tba\obj\x86\Debug\TextAdventureCS.pdb
 C:\Users\D252337\Dropbox\School\Radius\lj1\p3\Project\TextBasedAdventure\tba\bin\Debug\TextAdventureCS.exe
 C:\Users\D252337\Dropbox\School\Radius\lj1\p3\Project\TextBasedAdventure\tba\bin\Debug\TextAdventureCS.pdb
+C:\Users\Bryan_xugagv2\Source\Repos\tba\obj\x86\Debug\TextAdventureCS.csprojResolveAssemblyReference.cache
+C:\Users\Bryan_xugagv2\Source\Repos\tba\obj\x86\Debug\TextAdventureCS.csproj.CoreCompileInputs.cache
+C:\Users\Bryan_xugagv2\Source\Repos\tba\obj\x86\Debug\TextAdventureCS.exe
+C:\Users\Bryan_xugagv2\Source\Repos\tba\obj\x86\Debug\TextAdventureCS.pdb

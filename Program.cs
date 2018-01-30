@@ -40,7 +40,7 @@ namespace TextAdventureCS
             // General initializations to prevent magic numbers
             int mapwidth = 4;
             int mapheight = 4;
-            int xstartpos = 8;
+            int xstartpos = 1;
             int ystartpos = 1;
             // Welcome the player
             Console.WriteLine("Welcome to a textbased adventure");
@@ -148,7 +148,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu)
+        static int ShowMenu(Actor Health, Map map, ref List<string> menu)
         {
             int choice;
             string input;
@@ -184,6 +184,11 @@ namespace TextAdventureCS
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
                 input = Console.ReadLine();
+
+                Console.WriteLine("#####################");
+                Console.WriteLine("Health : {0}", Health);
+                Console.WriteLine("#####################");
+
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
             //return choice;
