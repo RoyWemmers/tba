@@ -105,7 +105,7 @@ namespace TextAdventureCS
             Forrest forrest = new Forrest("Black Forrest");
             map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
-            map.AddLocation(mainroad, 1, 2);
+            map.AddLocation(mainroad, 2, 1);
         }
 
         static void Start(ref Map map, ref Player player)
@@ -185,7 +185,9 @@ namespace TextAdventureCS
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
                 input = Console.ReadLine();
 
-
+                Console.WriteLine("###############");
+                Console.WriteLine("{Health : {0}", Health);
+                Console.WriteLine("###############");
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
             //return choice;
