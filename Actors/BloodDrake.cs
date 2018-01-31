@@ -10,8 +10,7 @@ namespace TextAdventureCS
         public BloodDrake(string name, int maxHealth, int maxStamina)
             : base(name, maxHealth, maxStamina)
         {
-            health = 50;
-            maxHealth = 50;
+
         }
 
         public override void TakeHit(int damage)

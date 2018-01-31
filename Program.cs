@@ -84,7 +84,7 @@ namespace TextAdventureCS
 
         static void Welcome(ref Player player)
         {
-            int sleep = 0;
+            int sleep = 1000;
             Console.Clear();
             Console.WriteLine("You wake up in a forest...");
             Thread.Sleep(sleep);
@@ -97,18 +97,6 @@ namespace TextAdventureCS
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
             Console.Clear();
-
-            // Added newline to improve readability.
-            player.ShowInventory();
-            Console.WriteLine("In the process of walking to the top of the hill you see a Small old Rune.");
-            Thread.Sleep(sleep);
-            Console.WriteLine("As you approach the entry you are shocked to see a pair of glinstering red eyes stare at you.");
-            Thread.Sleep(sleep);
-            Console.WriteLine("As you get closer to the entry the creature screeshes and runs off into the ruin..");
-            Thread.Sleep(sleep);
-            Console.WriteLine("Do you want to follow the creature into the ruin? (y/n)");
-            Thread.Sleep(sleep);
-            Console.ReadKey();
         }
 
         static void InitMap(ref Map map)
@@ -129,9 +117,12 @@ namespace TextAdventureCS
 
         static void Start(ref Map map, ref Player player)
         {
+            Rik rik = new Rik("Rik", 10000, 10000);
             BloodDrake blooddrake = new BloodDrake("Blood Drake", 50, 10);
             List<string> menuItems = new List<string>();
             int choice;
+
+            rik.EncounterRik();
 
             // Refactored by Michiel and Alex
             do
