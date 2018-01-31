@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TextAdventureCS.Actors
+namespace TextAdventureCS
 {
     class BloodDrake : Actor
     {
@@ -11,6 +11,7 @@ namespace TextAdventureCS.Actors
             : base(name, maxHealth, maxStamina)
         {
             health = 50;
+            maxHealth = 50;
         }
 
         public override void TakeHit(int damage)
@@ -19,17 +20,21 @@ namespace TextAdventureCS.Actors
         }
 
         public void StartEncouter(ref Player player)
-        {
+        { 
             Console.WriteLine("The Blood Drake Attacks!");
             do
             {
+                Program.HealthUI("Blood Drake", health, maxHealth, stamina, maxStamina);
                 CastAbility(ref player);
+                FightUI fui = new FightUI();
+                health -= fui.ShowFightUI(ref player);
+                Console.Clear();
             } while (health > 1);
             Console.WriteLine("The Blood Drake falls down from the sky!");
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("Congrats! You've defeated the Blood Drake!");
-            Console.WriteLine("Loot: 10G, Sword, Pouch of Goods");
+            
         }
 
         public void CastAbility(ref Player player)
@@ -39,13 +44,13 @@ namespace TextAdventureCS.Actors
             switch (rnd.Next(1,3))
             {
                 case 1:
-                    player.SetHealth(Scare());
+                    player.SetStamina(Scare());
                     break;
                 case 2:
-                    Claw();
+                    player.SetHealth(Claw());
                     break;
                 case 3:
-                    ShootFireBall();
+                    player.SetHealth(ShootFireBall());
                     break;
             }
         }
@@ -57,11 +62,13 @@ namespace TextAdventureCS.Actors
 
             int staminaLoss = rnd.Next(2, 10);
 
+            Console.WriteLine();
             Console.WriteLine("The Blood Drake Flies really high in to the sky!");
             Console.WriteLine("After about five seconds the Blood Drake starts decending really fast!");
             Console.WriteLine("The Blood Drake near misses you!");
             Console.WriteLine("The Blood Drake scares you!");
             Console.WriteLine("Dealing {0} stamina loss!", staminaLoss);
+            Console.WriteLine();
 
             return staminaLoss;
         }
@@ -72,8 +79,10 @@ namespace TextAdventureCS.Actors
 
             int damage = rnd.Next(2, 5);
 
+            Console.WriteLine();
             Console.WriteLine("The Blood Drake claws you!");
             Console.WriteLine("Dealing {0} damage!", damage);
+            Console.WriteLine();
 
             return damage;
         }
@@ -84,8 +93,10 @@ namespace TextAdventureCS.Actors
 
             int damage = rnd.Next(2, 10);
 
+            Console.WriteLine();
             Console.WriteLine("The Blood Drake shoots a FireBall at you!");
             Console.WriteLine("Dealing {0} damage!", damage);
+            Console.WriteLine();
 
             return damage;
         }

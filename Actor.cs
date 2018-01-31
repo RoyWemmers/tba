@@ -59,5 +59,19 @@ namespace TextAdventureCS
             health -= damage;
         }
 
+        public void SetStamina(int staminaLoss)
+        {
+            stamina -= staminaLoss;
+        }
+
+        public bool IsAlive(int health)
+        {
+            if(health <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }

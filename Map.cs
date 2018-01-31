@@ -104,6 +104,11 @@ namespace TextAdventureCS
                 directions.west = -1;
             else if (map[pos.Yposition, pos.Xposition - 1] == null)
                 directions.west = -1;
+            // Makes shure you can't pass the bridge without on of the preprogrammed options
+            if (pos.Yposition == 5)
+            {
+                directions.north = -1;
+            }
         }
 
         public Location GetLocation()

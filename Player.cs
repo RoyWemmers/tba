@@ -100,5 +100,34 @@ namespace TextAdventureCS
                 Console.ReadKey();
             }
         }
+
+        public int BasicAttack(ref Player player, int bonusDamage)
+        {
+            int damage = 4 + bonusDamage;
+
+            player.SetStamina(2);
+
+            return damage;
+        }
+
+        public void ClimbBridge(ref Player player)
+        {
+            Random rnd = new Random();
+
+            int fall = rnd.Next(1, 100);
+
+            if (fall >= 80)
+            {
+                Console.WriteLine("Noo! You fell in to the river!");
+                Console.WriteLine("You take 20 damage for falling in to the river!");
+                Console.WriteLine("Luckily you could swim to the shore on the other side!");
+                player.TakeHit(20);
+            } else
+            {
+                Console.WriteLine("The side of the Bridge is really slippery!");
+                Console.WriteLine("Luckly you made it without a scratch!");
+            }
+
+        }
     }
 }

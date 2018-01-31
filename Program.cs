@@ -114,19 +114,22 @@ namespace TextAdventureCS
         static void InitMap(ref Map map)
         {
             // Add locations with their coordinates to this list.
+            RiksRuin rik = new RiksRuin("Rik's Mountian");
+            map.AddLocation(rik, 1, 1);
             Forrest forrest = new Forrest("Forrest");
-            map.AddLocation(forrest, 1, 1);
+            map.AddLocation(forrest, 2, 1);
             MainRoad mainroad = new MainRoad("Main Road");
-            map.AddLocation(mainroad, 2, 1);
             map.AddLocation(mainroad, 3, 1);
-            map.AddLocation(mainroad, 5, 1);
+            map.AddLocation(mainroad, 4, 1);
             map.AddLocation(mainroad, 6, 1);
+            map.AddLocation(mainroad, 7, 1);
             Bridge bridge = new Bridge("Bridge");
-            map.AddLocation(bridge, 4, 1);
+            map.AddLocation(bridge, 5, 1);
         }
 
         static void Start(ref Map map, ref Player player)
         {
+            BloodDrake blooddrake = new BloodDrake("Blood Drake", 50, 10);
             List<string> menuItems = new List<string>();
             int choice;
 
@@ -135,7 +138,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems, ref player);
+                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake);
 
                 if ( choice != menuItems.Count() )
                 {
@@ -160,14 +163,17 @@ namespace TextAdventureCS
 
                         case "Fight the Blood Drake":
                             Console.Clear();
-                            
+                            blooddrake.StartEncouter(ref player);
                             Console.ReadLine();
-                        break;
+                            map.Move("Go North");
+                            break;
 
                         case "Go via the side of the bridge":
-
-                        break;
-
+                            Console.Clear();
+                            player.ClimbBridge(ref player);
+                            Console.ReadLine();
+                            map.Move("Go North");
+                            break;
                     }
                 }
             } 
@@ -176,7 +182,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu, ref Player player)
+        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake)
         {
             int choice;
             string input;
@@ -197,13 +203,15 @@ namespace TextAdventureCS
                 if(acquirableitems)
                     menu.Add( ACTION_SEARCH );
             }
-            if (map.GetLocation().HasEnemy())
+            if ((map.GetYPosition() == 5 && map.GetXPosition() == 1) && drake.IsAlive(drake.GetHealth()))
             {
-                menu.Add( ACTION_FIGHT );
-                menu.Add( ACTION_RUN );
-            }
-            if (map.GetYPosition() == 4 && map.GetXPosition() == 1)
-            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("On one of the pillars of the bridge is a smalle Blood Drake…");
+                Console.WriteLine("The Blood Drake growls at you…");
+                Console.WriteLine("It isn’t going to let you pass the bridge…");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Gray;
+
                 menu.Add("Fight the Blood Drake");
                 menu.Add("Go via the side of the bridge");
             }
@@ -216,7 +224,7 @@ namespace TextAdventureCS
                     Console.WriteLine("{0} - {1}", i + 1, menu[i]);
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
-                HealthUI(player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina());
+                HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina());
                 input = Console.ReadLine();
                 Console.Clear();
                 map.GetLocation().Description();
@@ -249,14 +257,15 @@ namespace TextAdventureCS
             Console.ReadKey();
         }
 
-        static void HealthUI(int health, int maxHealth, int stamina, int maxStamina)
+        static public void HealthUI(string name, int health, int maxHealth, int stamina, int maxStamina)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("##############################");
-
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(name);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("{0, -3}","Health: ");  
-            for (int i = 0; i < health; i += (health / 10))
+            for (int i = 0; i < health; i += (maxHealth / 10))
             {
                 Console.Write("=");
             }
@@ -265,7 +274,7 @@ namespace TextAdventureCS
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("{0, -3}", "Stamina: ");
-            for (int i = 0; i < stamina; i += (stamina / 10))
+            for (int i = 0; i < stamina; i += (maxStamina / 10))
             {
                 Console.Write("=");
             }
@@ -274,6 +283,7 @@ namespace TextAdventureCS
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("##############################");
+            Console.ForegroundColor = ConsoleColor.Gray;
 
            
         }
