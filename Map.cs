@@ -111,6 +111,16 @@ namespace TextAdventureCS
             return map[pos.Yposition,pos.Xposition];
         }
 
+        public int GetXPosition()
+        {
+            return pos.Xposition;
+        }
+
+        public int GetYPosition()
+        {
+            return pos.Yposition;
+        }
+
         public int GetNorth()
         {
             return directions.north;

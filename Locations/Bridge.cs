@@ -11,11 +11,12 @@ namespace TextAdventureCS
         public Bridge(string name)
             : base(name)
         {
-            isBridge = true;
+
         }
         public override void Description()
         {
             // Insert a nice description
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("You are at the Bridge");
             Console.WriteLine("The bridge appears to be old…");
             Console.WriteLine("The Bridge crosses a really fast flowing river…");
@@ -23,6 +24,7 @@ namespace TextAdventureCS
             Console.WriteLine("The Blood Drake growls at you…");
             Console.WriteLine("It isn’t going to let you pass the bridge…");
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
     }

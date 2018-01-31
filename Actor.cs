@@ -54,6 +54,10 @@ namespace TextAdventureCS
             return stamina;
         }
 
+        public void SetHealth(int damage)
+        {
+            health -= damage;
+        }
 
     }
 }

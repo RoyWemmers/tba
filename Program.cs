@@ -118,9 +118,11 @@ namespace TextAdventureCS
             map.AddLocation(forrest, 1, 1);
             MainRoad mainroad = new MainRoad("Main Road");
             map.AddLocation(mainroad, 2, 1);
-            map.AddLocation(mainroad, 4, 1);
+            map.AddLocation(mainroad, 3, 1);
+            map.AddLocation(mainroad, 5, 1);
+            map.AddLocation(mainroad, 6, 1);
             Bridge bridge = new Bridge("Bridge");
-            map.AddLocation(bridge, 3, 1);
+            map.AddLocation(bridge, 4, 1);
         }
 
         static void Start(ref Map map, ref Player player)
@@ -155,6 +157,17 @@ namespace TextAdventureCS
                         case ACTION_RUN:
                             // Add code for running here
                         break;
+
+                        case "Fight the Blood Drake":
+                            Console.Clear();
+                            
+                            Console.ReadLine();
+                        break;
+
+                        case "Go via the side of the bridge":
+
+                        break;
+
                     }
                 }
             } 
@@ -189,7 +202,7 @@ namespace TextAdventureCS
                 menu.Add( ACTION_FIGHT );
                 menu.Add( ACTION_RUN );
             }
-            if(map.GetLocation().IsBridge())
+            if (map.GetYPosition() == 4 && map.GetXPosition() == 1)
             {
                 menu.Add("Fight the Blood Drake");
                 menu.Add("Go via the side of the bridge");
@@ -205,6 +218,8 @@ namespace TextAdventureCS
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
                 HealthUI(player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina());
                 input = Console.ReadLine();
+                Console.Clear();
+                map.GetLocation().Description();
 
             } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
 
