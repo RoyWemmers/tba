@@ -113,6 +113,8 @@ namespace TextAdventureCS
             map.AddLocation(mainroad, 7, 1);
             Bridge bridge = new Bridge("Bridge");
             map.AddLocation(bridge, 5, 1);
+            CastleGate CastleGate = new CastleGate("Castle Gate");
+            map.AddLocation(CastleGate, 8, 1);
         }
 
         static void Start(ref Map map, ref Player player)
