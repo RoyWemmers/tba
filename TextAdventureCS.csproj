@@ -53,6 +53,7 @@
     <Compile Include="Locations\Forest.cs" />
     <Compile Include="Locations\MainRoad.cs" />
     <Compile Include="Locations\RiksRuin.cs" />
+    <Compile Include="Shop.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Objects.cs" />
     <Compile Include="Items\Diamond.cs" />
