@@ -35,6 +35,8 @@ namespace TextAdventureCS
         const string ACTION_FIGHT = "Fight";
         const string ACTION_RUN = "Run";
         const string ACTION_QUIT = "Exit";
+        const string ACTION_SHOP = "Shop";
+        const string ACTION_SHOWINVENTORY = "Show Inventory";
 
         static void Main(string[] args)
         {
@@ -123,7 +125,6 @@ namespace TextAdventureCS
         {
             Rik rik = new Rik("Rik", 10000, 10000);
             BloodDrake blooddrake = new BloodDrake("Blood Drake", 50, 10);
-            AngryMan angryman = new AngryMan("Angry Man", 70, 10);
             List<string> menuItems = new List<string>();
             int choice;
 
@@ -134,7 +135,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake, ref angryman);
+                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake);
 
                 if ( choice != menuItems.Count() )
                 {
@@ -157,32 +158,32 @@ namespace TextAdventureCS
                             // Add code for running here
                         break;
 
+                        case ACTION_SHOWINVENTORY:
+                            player.ShowInventory();
+                            Console.ReadLine();
+                            choice = 0;
+                        break;
+
+                        case ACTION_SHOP:
+                            Shop shop = new Shop();
+                            shop.ShowShop(ref player);
+                            choice = 0;
+                            Console.ReadLine();
+                        break;
+
                         case "Fight the Blood Drake":
                             Console.Clear();
                             blooddrake.StartEncouter(ref player);
                             Console.ReadLine();
                             map.Move("Go North");
-                            break;
+                        break;
 
                         case "Go via the side of the bridge":
                             Console.Clear();
                             player.ClimbBridge(ref player);
                             Console.ReadLine();
                             map.Move("Go North");
-                            break;
-
-                        case "Fight the man":
-                            Console.Clear();
-                            angryman.StartEncounter(ref player);
-                            Console.Clear();
-                            break;
-
-                        case "Leave the man":
-                            Console.Clear();
-                            angryman.StartEncounter(ref player);
-                            map.Move("Go West");
-                            Console.Clear();
-                            break;
+                        break;
                     }
                 }
             } 
@@ -191,7 +192,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake, ref AngryMan angryMan)
+        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake)
         {
             int choice;
             string input;
@@ -224,19 +225,9 @@ namespace TextAdventureCS
                 menu.Add("Fight the Blood Drake");
                 menu.Add("Go via the side of the bridge");
             }
-            if ((map.GetYPosition() == 3 && map.GetXPosition() == 2) && angryMan.IsAlive(angryMan.GetHealth()))
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("An angry man opens the door, and shouts:");
-                Console.WriteLine("If you don't stop bothering me I will kick your teeth in.");
-                Console.WriteLine("As you look inside the house you see a bag of coins..");
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-                menu.Add("Fight the man");
-                menu.Add("Leave the man");
-            }
             menu.Add( ACTION_QUIT );
+            menu.Add( ACTION_SHOP );
+            menu.Add( ACTION_SHOWINVENTORY );
 
             do
             {

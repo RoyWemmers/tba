@@ -8,11 +8,13 @@ namespace TextAdventureCS
     class Player : Actor
     {
         private Dictionary<string, Objects> inventory;
+        protected float gold;
 
         public Player(string name, int maxHealth, int maxStamina)
             : base(name, maxHealth, maxStamina)
         {
             inventory = new Dictionary<string, Objects>();
+            gold = 1;
         }
 
         public void DropItem(string itemName)
@@ -50,8 +52,11 @@ namespace TextAdventureCS
                 foreach (var item in inventory)
                 {
                     Console.WriteLine(item.Value);
+                    
                 }
+
             }
+
         }
 
         public bool HasObject(string name)
@@ -128,6 +133,16 @@ namespace TextAdventureCS
                 Console.WriteLine("Luckly you made it without a scratch!");
             }
 
+        }
+
+        public float GetGold()
+        {
+            return gold;
+        }
+
+        public void SetGold(int addGold)
+        {
+            gold += addGold;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TextAdventureCS.Items
+namespace TextAdventureCS
 {
     class HealthPotion : Objects
     {
@@ -17,9 +17,9 @@ namespace TextAdventureCS.Items
             Console.WriteLine("You have a Health Potion in your hand");
         }
 
-        public void UsePotion()
+        public void UsePotion(ref Player player)
         {
-
+            player.SetHealth(-10);
         }
     }
 }
