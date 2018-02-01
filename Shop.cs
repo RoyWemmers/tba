@@ -15,18 +15,23 @@ namespace TextAdventureCS
         public void ShowShop()
         {
             List<object> shop = new List<object>();
-            HealthPotion hp = new HealthPotion("Health", true);
 
-            shop.Add(hp);
+            HealthPotion hp = new HealthPotion("Health Potion", true);
+            object[] healthpotion = new object[2];
+            healthpotion[0] = hp;
+            healthpotion[1] = "Health Potion";
+            healthpotion[2] = 1;
+
+
+
+            shop.Add(healthpotion);
+
         }
 
-        public void BuyShop(ref Player player, ref HealthPotion hp, ref List<object> shop)
+        public void BuyShop(ref Player player, ref object[] healthpotion, ref List<object> shop)
         {
             Console.WriteLine("Shop: ");
-            for (int i = 0; i < shop.Count; i++)
-            {
-                Console.WriteLine("{0} {1} {2}", i, shop.);
-            }
+            Console.WriteLine("{0}) {1} {2}",1 ,healthpotion[1], healthpotion[2]);
 
         }
 
