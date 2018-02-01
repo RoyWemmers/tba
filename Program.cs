@@ -123,6 +123,7 @@ namespace TextAdventureCS
         {
             Rik rik = new Rik("Rik", 10000, 10000);
             BloodDrake blooddrake = new BloodDrake("Blood Drake", 50, 10);
+            AngryMan angryman = new AngryMan("Angry Man", 70, 10);
             List<string> menuItems = new List<string>();
             int choice;
 
@@ -133,7 +134,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake);
+                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake, ref angryman);
 
                 if ( choice != menuItems.Count() )
                 {
@@ -169,6 +170,19 @@ namespace TextAdventureCS
                             Console.ReadLine();
                             map.Move("Go North");
                             break;
+
+                        case "Fight the man":
+                            Console.Clear();
+                            angryman.StartEncounter(ref player);
+                            Console.Clear();
+                            break;
+
+                        case "Leave the man":
+                            Console.Clear();
+                            angryman.StartEncounter(ref player);
+                            map.Move("Go West");
+                            Console.Clear();
+                            break;
                     }
                 }
             } 
@@ -177,7 +191,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake)
+        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake, ref AngryMan angryMan)
         {
             int choice;
             string input;
@@ -209,6 +223,18 @@ namespace TextAdventureCS
 
                 menu.Add("Fight the Blood Drake");
                 menu.Add("Go via the side of the bridge");
+            }
+            if ((map.GetYPosition() == 3 && map.GetXPosition() == 2) && angryMan.IsAlive(angryMan.GetHealth()))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("An angry man opens the door, and shouts:");
+                Console.WriteLine("If you don't stop bothering me I will kick your teeth in.");
+                Console.WriteLine("As you look inside the house you see a bag of coins..");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                menu.Add("Fight the man");
+                menu.Add("Leave the man");
             }
             menu.Add( ACTION_QUIT );
 
