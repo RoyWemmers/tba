@@ -39,7 +39,7 @@ namespace TextAdventureCS
         static void Main(string[] args)
         {
             // General initializations to prevent magic numbers
-            int mapwidth = 8;
+            int mapwidth = 20;
             int mapheight = 8;
             int xstartpos = 1;
             int ystartpos = 1;
@@ -113,6 +113,10 @@ namespace TextAdventureCS
             map.AddLocation(mainroad, 7, 1);
             Bridge bridge = new Bridge("Bridge");
             map.AddLocation(bridge, 5, 1);
+            CastleGate CastleGate = new CastleGate("Castle Gate");
+            map.AddLocation(CastleGate, 8, 1);
+            House House = new House("House");
+            map.AddLocation(House, 3, 2);
         }
 
         static void Start(ref Map map, ref Player player)

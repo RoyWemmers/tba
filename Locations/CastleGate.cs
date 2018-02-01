@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TextAdventureCS.Locations
-{
+namespace TextAdventureCS
+{ 
     class CastleGate : Location
     {
 
@@ -16,9 +16,11 @@ namespace TextAdventureCS.Locations
 
         public override void Description()
         {
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("You have arrived at the Castle gate");
             Console.WriteLine("The gate itself isn't that big but the walls around it are huge.");
+            Console.WriteLine();
         }
 
     }
