@@ -152,9 +152,9 @@ namespace TextAdventureCS
             
         }
 
-        public void BuyShop(ref)
+        public void BuyShop(ref Player player)
         {
-
+            player.SetGold(-1);   
         }
     }
 }
