@@ -34,6 +34,13 @@ namespace TextAdventureCS
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("Congrats! You've killed an innocent man in his own house!");
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
+
+            Console.WriteLine("After you took the man's money you decide to look search his house for usefull stuff.");
+            Console.WriteLine("As you scavenge around the house you find a pair of brass knuckles!");
+            
         }
 
         public void CastAbility(ref Player player)
