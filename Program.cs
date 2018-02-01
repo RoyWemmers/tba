@@ -35,7 +35,7 @@ namespace TextAdventureCS
         const string ACTION_FIGHT = "Fight";
         const string ACTION_RUN = "Run";
         const string ACTION_QUIT = "Exit";
-        const string ACTION_SHOP = "Shop";
+        const string ACTION_SHOP = "Call Rik for Shop";
         const string ACTION_SHOWINVENTORY = "Show Inventory";
         const string ACTION_USEHEALTHPOTION = "Use Health Potion";
 
@@ -107,17 +107,24 @@ namespace TextAdventureCS
             // Add locations with their coordinates to this list.
             RiksRuin rik = new RiksRuin("Rik's Mountian");
             map.AddLocation(rik, 1, 1);
+
             Forrest forrest = new Forrest("Forrest");
             map.AddLocation(forrest, 2, 1);
+
             MainRoad mainroad = new MainRoad("Main Road");
             map.AddLocation(mainroad, 3, 1);
             map.AddLocation(mainroad, 4, 1);
             map.AddLocation(mainroad, 6, 1);
-            map.AddLocation(mainroad, 7, 1);
+
             Bridge bridge = new Bridge("Bridge");
             map.AddLocation(bridge, 5, 1);
+
             CastleGate CastleGate = new CastleGate("Castle Gate");
-            map.AddLocation(CastleGate, 8, 1);
+            map.AddLocation(CastleGate, 7, 1);
+
+            InnerCastleRoad innercastleroad = new InnerCastleRoad("Inner Castle Road");
+            map.AddLocation(innercastleroad, 8, 1);
+
             House House = new House("House");
             map.AddLocation(House, 3, 2);
         }
@@ -197,13 +204,17 @@ namespace TextAdventureCS
                             Console.Clear();
                             angryman.StartEncounter(ref player);
                             Console.ReadLine();
-                            break;
+                        break;
 
                         case "Leave the man":
                             Console.Clear();
                             map.Move("Go West");
                             Console.ReadLine();
-                            break;
+                        break;
+
+                        case "Climb over the wall":
+                            map.Move("Go North");
+                        break;
                     }
                 }
             } 
@@ -258,6 +269,11 @@ namespace TextAdventureCS
 
                 menu.Add("Leave the man");
                 menu.Add("Fight the man");
+            }
+
+            if ((map.GetYPosition() == 7 && map.GetXPosition() == 1) && angryman.IsAlive(angryman.GetHealth()))
+            { 
+                menu.Add("Climb over the wall");
             }
 
             menu.Add( ACTION_QUIT );

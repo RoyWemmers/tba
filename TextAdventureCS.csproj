@@ -54,6 +54,7 @@
     <Compile Include="Locations\CastleGate.cs" />
     <Compile Include="Locations\Forest.cs" />
     <Compile Include="Locations\House.cs" />
+    <Compile Include="Locations\InnerCastleRoad.cs" />
     <Compile Include="Locations\MainRoad.cs" />
     <Compile Include="Locations\RiksRuin.cs" />
     <Compile Include="Shop.cs" />
