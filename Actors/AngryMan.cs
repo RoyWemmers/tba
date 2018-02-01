@@ -23,13 +23,14 @@ namespace TextAdventureCS
             Console.WriteLine("The Angry Man Attacks!");
             do
             {
-                Program.HealthUI("Angry Man", health, maxHealth, stamina, maxStamina);
+                Program.HealthUI("Angry Man", health, maxHealth, stamina, maxStamina, 10);
                 CastAbility(ref player);
                 FightUI fui = new FightUI();
                 health -= fui.ShowFightUI(ref player);
                 Console.Clear();
             } while (health > 1);
             Console.WriteLine("The angry man is knocked down..");
+            player.ResetStamina(ref player);
             Console.WriteLine("As his head bounces against the floor he stops breathing.. ");
             Console.ReadLine();
             Console.Clear();
@@ -39,6 +40,7 @@ namespace TextAdventureCS
             Console.ReadLine();
 
             Console.WriteLine("After you took the man's money you decide to look search his house for usefull stuff.");
+            player.SetGold(20);
             Console.WriteLine("As you scavenge around the house you find a pair of brass knuckles!");
             
         }

@@ -117,14 +117,56 @@ namespace TextAdventureCS
 
         public int BasicAttack(ref Player player, int bonusDamage)
         {
-            if(player.GetStamina() < 0)
+            if (player.GetStamina() <= 0)
             {
                 Console.WriteLine("You don't have enough mana!");
+                Console.ReadLine();
+                player.SetStamina(player.GetStamina());
             } else
             {
                 int damage = 4 + bonusDamage;
 
                 player.SetStamina(2);
+
+                return damage;
+            }
+            return 0;
+        }
+
+        public int Punch(ref Player player, int bonusDamage)
+        {
+
+            if (player.GetStamina() <= 0)
+            {
+                Console.WriteLine("You don't have enough mana!");
+                Console.ReadLine();
+                player.SetStamina(player.GetStamina());
+            }
+            else
+            {
+                int damage = 6 + bonusDamage;
+
+                player.SetStamina(5);
+
+                return damage;
+            }
+            return 0;
+        }
+
+        public int Kick(ref Player player, int bonusDamage)
+        {
+
+            if (player.GetStamina() <= 0)
+            {
+                Console.WriteLine("You don't have enough mana!");
+                Console.ReadLine();
+                player.SetStamina(player.GetStamina());
+            }
+            else
+            {
+                int damage = 10 + bonusDamage;
+
+                player.SetStamina(10);
 
                 return damage;
             }
@@ -148,7 +190,23 @@ namespace TextAdventureCS
                 Console.WriteLine("The side of the Bridge is really slippery!");
                 Console.WriteLine("Luckly you made it without a scratch!");
             }
+        }
+        public void DelItemInvenyory(string name)
+        {
+            inventory.Remove(name);
+        }
 
+        public bool IsAlive()
+        {
+            if (health <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        public void ResetStamina(ref Player player)
+        {
+            player.SetStamina(-(player.GetMaxStamina() - player.GetStamina()));
         }
 
         public float GetGold()
@@ -159,11 +217,6 @@ namespace TextAdventureCS
         public void SetGold(int addGold)
         {
             gold += addGold;
-        }
-
-        public void DelItemInvenyory(string name)
-        {
-            inventory.Remove(name);
         }
     }
 }

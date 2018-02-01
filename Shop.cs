@@ -52,9 +52,9 @@ namespace TextAdventureCS
 
         public void BuyHealthPotion(ref Player player, ref HealthPotion hp)
         {
-            if (player.GetGold() > 0)
+            if (player.GetGold() > 10)
             {
-                player.SetGold(-1);
+                player.SetGold(-10);
                 player.PickupItem(hp);
                 player.ShowInventory();
             } else

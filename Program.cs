@@ -87,7 +87,7 @@ namespace TextAdventureCS
 
         static void Welcome(ref Player player)
         {
-            int sleep = 1000;
+            int sleep = 0;
             Console.Clear();
             Console.WriteLine("You wake up in a forest...");
             Thread.Sleep(sleep);
@@ -303,6 +303,15 @@ namespace TextAdventureCS
         static void Quit()
         {
             Console.Clear();
+            Console.WriteLine("Thank you for playing and have a nice day!");
+            Console.WriteLine("Press a key to exit...");
+            Console.ReadKey();
+        }
+
+        public static void Dead()
+        {
+            Console.Clear();
+            Console.WriteLine("You died!");
             Console.WriteLine("Thank you for playing and have a nice day!");
             Console.WriteLine("Press a key to exit...");
             Console.ReadKey();

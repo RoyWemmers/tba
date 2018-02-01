@@ -34,6 +34,7 @@ namespace TextAdventureCS
             Console.Clear();
             Console.WriteLine("Congrats! You've defeated the Blood Drake!");
             player.SetGold(10);
+            player.SetStamina(-player.GetMaxStamina());
             Console.WriteLine("You get 10G loot!");
             
         }
