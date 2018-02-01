@@ -146,8 +146,15 @@ namespace TextAdventureCS
         public void ShowShop()
         {
             List<object> shop = new List<object>();
+            HealthPotion hp = new HealthPotion("Health", true);
 
+            shop.Add(hp);
             
+        }
+
+        public void BuyShop(ref)
+        {
+
         }
     }
 }
