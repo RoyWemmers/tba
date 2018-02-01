@@ -52,8 +52,11 @@ namespace TextAdventureCS
                 foreach (var item in inventory)
                 {
                     Console.WriteLine(item.Value);
+                    
                 }
+
             }
+
         }
 
         public bool HasObject(string name)

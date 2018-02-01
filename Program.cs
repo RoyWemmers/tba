@@ -35,6 +35,8 @@ namespace TextAdventureCS
         const string ACTION_FIGHT = "Fight";
         const string ACTION_RUN = "Run";
         const string ACTION_QUIT = "Exit";
+        const string ACTION_SHOP = "Shop";
+        const string ACTION_SHOWINVENTORY = "Show Inventory";
 
         static void Main(string[] args)
         {
@@ -156,19 +158,32 @@ namespace TextAdventureCS
                             // Add code for running here
                         break;
 
+                        case ACTION_SHOWINVENTORY:
+                            player.ShowInventory();
+                            Console.ReadLine();
+                            choice = 0;
+                        break;
+
+                        case ACTION_SHOP:
+                            Shop shop = new Shop();
+                            shop.ShowShop(ref player);
+                            choice = 0;
+                            Console.ReadLine();
+                        break;
+
                         case "Fight the Blood Drake":
                             Console.Clear();
                             blooddrake.StartEncouter(ref player);
                             Console.ReadLine();
                             map.Move("Go North");
-                            break;
+                        break;
 
                         case "Go via the side of the bridge":
                             Console.Clear();
                             player.ClimbBridge(ref player);
                             Console.ReadLine();
                             map.Move("Go North");
-                            break;
+                        break;
                     }
                 }
             } 
@@ -211,6 +226,8 @@ namespace TextAdventureCS
                 menu.Add("Go via the side of the bridge");
             }
             menu.Add( ACTION_QUIT );
+            menu.Add( ACTION_SHOP );
+            menu.Add( ACTION_SHOWINVENTORY );
 
             do
             {

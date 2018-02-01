@@ -21,7 +21,7 @@ namespace TextAdventureCS
 
         public void GreetRikOutside()
         {
-            int sleep = 2000;
+            int sleep = 0;
             Console.WriteLine("You encounter Rik…");
             Thread.Sleep(sleep);
             Console.WriteLine("Rik appears to be wearing an adidas tracksuit…");
@@ -35,7 +35,7 @@ namespace TextAdventureCS
 
         public void GreetRikInside()
         {
-            int sleep = 2000;
+            int sleep = 0;
             Console.WriteLine("You walk inside…");
             Thread.Sleep(sleep);
             Console.WriteLine("Someone pulls on your shoulder!");
