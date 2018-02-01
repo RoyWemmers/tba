@@ -9,14 +9,12 @@ namespace TextAdventureCS
     {
         protected string name;
         protected bool hasEnemy;
-        protected bool isBridge;
         protected Dictionary<string, Objects> items;
 
         public Location(string name)
         {
             this.name = name;
             hasEnemy = false;
-            isBridge = false;
             items = new Dictionary<string, Objects>();
         }
 
@@ -30,11 +28,6 @@ namespace TextAdventureCS
         public virtual bool HasEnemy()
         {
             return hasEnemy;
-        }
-
-        public virtual bool IsBridge()
-        {
-            return isBridge;
         }
 
         public virtual bool CheckForItems()
