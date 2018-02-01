@@ -15,7 +15,7 @@ namespace TextAdventureCS
         public int ShowFightUI(ref Player player)
         {
             int damage;
-            Program.HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina());
+            Program.HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina(), player.GetGold());
             damage = FightMenu(ref player);
             return damage;
         }

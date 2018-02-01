@@ -37,6 +37,7 @@ namespace TextAdventureCS
         const string ACTION_QUIT = "Exit";
         const string ACTION_SHOP = "Shop";
         const string ACTION_SHOWINVENTORY = "Show Inventory";
+        const string ACTION_USEHEALTHPOTION = "Use Health Potion";
 
         static void Main(string[] args)
         {
@@ -184,6 +185,12 @@ namespace TextAdventureCS
                             Console.ReadLine();
                             map.Move("Go North");
                         break;
+
+                        case ACTION_USEHEALTHPOTION:
+                            HealthPotion hp = new HealthPotion("Health Potion", true);
+                            hp.UsePotion(ref player);
+                            choice = 0;
+                        break;
                     }
                 }
             } 
@@ -225,9 +232,14 @@ namespace TextAdventureCS
                 menu.Add("Fight the Blood Drake");
                 menu.Add("Go via the side of the bridge");
             }
+
             menu.Add( ACTION_QUIT );
             menu.Add( ACTION_SHOP );
             menu.Add( ACTION_SHOWINVENTORY );
+
+            if(player.HasObject("Health Potion")) {
+                menu.Add( ACTION_USEHEALTHPOTION );
+            }
 
             do
             {
@@ -236,7 +248,7 @@ namespace TextAdventureCS
                     Console.WriteLine("{0} - {1}", i + 1, menu[i]);
                 }
                 Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
-                HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina());
+                HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina(), player.GetGold());
                 input = Console.ReadLine();
                 Console.Clear();
                 map.GetLocation().Description();
@@ -269,7 +281,7 @@ namespace TextAdventureCS
             Console.ReadKey();
         }
 
-        static public void HealthUI(string name, int health, int maxHealth, int stamina, int maxStamina)
+        static public void HealthUI(string name, int health, int maxHealth, int stamina, int maxStamina, float gold)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("##############################");
@@ -294,6 +306,7 @@ namespace TextAdventureCS
             Console.WriteLine(" {0}/{1}", stamina, maxStamina);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Gold: {0}G", gold);
             Console.WriteLine("##############################");
             Console.ForegroundColor = ConsoleColor.Gray;
 

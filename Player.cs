@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace TextAdventureCS
 {
@@ -39,8 +40,16 @@ namespace TextAdventureCS
         public void PickupItem(Objects obj)
         {
             // Add an if-statement here when you want to have a maximum number of items
-            inventory.Add(obj.GetName(), obj);
-            obj.SetIsAcquirable(false);
+            if(HasObject(obj.GetName()))
+            {
+                Console.WriteLine("You already carry the maximum amount of this item");
+                gold += 1;
+            } else
+            {
+                inventory.Add(obj.GetName(), obj);
+                obj.SetIsAcquirable(false);
+            }
+           
         }
 
         public void ShowInventory()
@@ -108,11 +117,18 @@ namespace TextAdventureCS
 
         public int BasicAttack(ref Player player, int bonusDamage)
         {
-            int damage = 4 + bonusDamage;
+            if(player.GetStamina() < 0)
+            {
+                Console.WriteLine("You don't have enough mana!");
+            } else
+            {
+                int damage = 4 + bonusDamage;
 
-            player.SetStamina(2);
+                player.SetStamina(2);
 
-            return damage;
+                return damage;
+            }
+            return 0;
         }
 
         public void ClimbBridge(ref Player player)
@@ -143,6 +159,11 @@ namespace TextAdventureCS
         public void SetGold(int addGold)
         {
             gold += addGold;
+        }
+
+        public void DelItemInvenyory(string name)
+        {
+            inventory.Remove(name);
         }
     }
 }

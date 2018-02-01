@@ -20,6 +20,7 @@ namespace TextAdventureCS
         public void UsePotion(ref Player player)
         {
             player.SetHealth(-10);
+            player.DelItemInvenyory("Health Potion");
         }
     }
 }
