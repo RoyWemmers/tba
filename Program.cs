@@ -87,7 +87,7 @@ namespace TextAdventureCS
 
         static void Welcome(ref Player player)
         {
-            int sleep = 0;
+            int sleep = 2000;
             Console.Clear();
             Console.WriteLine("You wake up in a forest...");
             Thread.Sleep(sleep);
@@ -135,7 +135,7 @@ namespace TextAdventureCS
             Rik rik = new Rik("Rik", 10000, 10000);
             BloodDrake blooddrake = new BloodDrake("Blood Drake", 50, 10);
             AngryMan angryman = new AngryMan("Angry Man", 70, 10);
-            CastleBoss castleboss = new CastleBoss("Castle Boss,",100, 10);
+            CastleBoss boss = new CastleBoss("Castle Boss", 250, 10);
             List<string> menuItems = new List<string>();
             int choice;
 
@@ -146,7 +146,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake, ref angryman, ref castleboss);
+                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake, ref angryman);
 
                 if ( choice != menuItems.Count() )
                 {
@@ -218,9 +218,11 @@ namespace TextAdventureCS
                             map.Move("Go North");
                         break;
 
-                        case "Fight the boss":
-
-                        break;
+                        case "Fight the Boss":
+                            Console.Clear();
+                            boss.StartEncounter(ref player);
+                            Console.ReadLine();
+                            break;
                     }
                 }
             } 
@@ -229,7 +231,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake, ref AngryMan angryman, ref CastleBoss castleboss)
+        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake, ref AngryMan angryman)
         {
             int choice;
             string input;
@@ -266,16 +268,15 @@ namespace TextAdventureCS
             if ((map.GetYPosition() == 3 && map.GetXPosition() == 2) && angryman.IsAlive(angryman.GetHealth()))
             {
 
-                    Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("When you knock on the door you hear heavy footsteps walking towards the door");
                 Console.WriteLine("An angry man opens the door, and screams:");
-                    Console.WriteLine("If you don't stop bothering me I will kick your teeth in!");
-                    Console.WriteLine("As you look inside the house you can see a bag of gold.");
-                    Console.WriteLine("Do you want to fight the man, and take his gold, or will you leave the man.");
-                    Console.WriteLine();
-                    Console.ForegroundColor = ConsoleColor.Gray;
-              
-                menu.Add("Leave the man");
+                Console.WriteLine("If you don't stop bothering me I will kick your teeth in!");
+                Console.WriteLine("As you look inside the house you can see a bag of gold.");
+                Console.WriteLine("Do you want to fight the man, and take his gold, or will you leave the man.");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Gray;
+
                 menu.Add("Fight the man");
             }
 
@@ -285,7 +286,7 @@ namespace TextAdventureCS
                 menu.Remove("Go North");
             }
 
-            if (map.GetYPosition() == 7 && map.GetXPosition() == 1)
+            if (map.GetYPosition() == 9 && map.GetXPosition() == 1)
             {
                 menu.Add("Fight the Boss");
             }

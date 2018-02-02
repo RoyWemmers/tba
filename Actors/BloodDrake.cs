@@ -26,7 +26,7 @@ namespace TextAdventureCS
                 Program.HealthUI("Blood Drake", health, maxHealth, stamina, maxStamina, 10);
                 CastAbility(ref player);
                 FightUI fui = new FightUI();
-                health -= fui.ShowFightUI(ref player, ref map);
+                health -= fui.ShowFightUI(ref player);
                 Console.Clear();
             } while (health > 1);
             Console.WriteLine("The Blood Drake falls down from the sky!");

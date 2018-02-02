@@ -16,15 +16,15 @@ namespace TextAdventureCS
 
         }
 
-        public int ShowFightUI(ref Player player, ref Map map)
+        public int ShowFightUI(ref Player player)
         {
             int damage;
             Program.HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina(), player.GetGold());
-            damage = FightMenu(ref player, ref map);
+            damage = FightMenu(ref player);
             return damage;
         }
 
-        public int FightMenu(ref Player player, ref Map map)
+        public int FightMenu(ref Player player)
         {
             string input;
             int choice;
