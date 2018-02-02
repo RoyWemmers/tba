@@ -48,6 +48,7 @@
     <Compile Include="Actors\BloodDrake.cs" />
     <Compile Include="Actors\Rik.cs" />
     <Compile Include="FightUI.cs" />
+    <Compile Include="Items\BrassKnuckles.cs" />
     <Compile Include="Items\HealthPotion.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Locations\Bridge.cs" />

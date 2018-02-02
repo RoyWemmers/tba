@@ -9,14 +9,15 @@ namespace TextAdventureCS
     {
         public House(string name)
             : base(name)
-        {
-
+        { 
+            
         }
 
         public override void Description()
         {
-            // Insert a nice description
-            Console.WriteLine("You are standing in front of the door");
+            Console.WriteLine("You walk onto a small path, leading to a tiny house..");
+            Console.WriteLine("You decide to walk towards the house");
+
         }
     }
 }

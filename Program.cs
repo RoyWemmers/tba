@@ -241,14 +241,16 @@ namespace TextAdventureCS
 
             if ((map.GetYPosition() == 3 && map.GetXPosition() == 2) && angryman.IsAlive(angryman.GetHealth()))
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("An angry man opens the door, and screams:");
-                Console.WriteLine("If you don't stop bothering me I will kick your teeth in!");
-                Console.WriteLine("As you look inside the house you can see a bag of gold.");
-                Console.WriteLine("Do you want to fight the man, and take his gold, or will you leave the man.");
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Gray;
 
+                    Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("When you knock on the door you hear heavy footsteps walking towards the door");
+                Console.WriteLine("An angry man opens the door, and screams:");
+                    Console.WriteLine("If you don't stop bothering me I will kick your teeth in!");
+                    Console.WriteLine("As you look inside the house you can see a bag of gold.");
+                    Console.WriteLine("Do you want to fight the man, and take his gold, or will you leave the man.");
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Gray;
+              
                 menu.Add("Leave the man");
                 menu.Add("Fight the man");
             }
