@@ -43,7 +43,7 @@ namespace TextAdventureCS
         {
             // General initializations to prevent magic numbers
             int mapwidth = 20;
-            int mapheight = 8;
+            int mapheight = 20;
             int xstartpos = 1;
             int ystartpos = 1;
             // Welcome the player
@@ -121,7 +121,8 @@ namespace TextAdventureCS
 
             CastleGate CastleGate = new CastleGate("Castle Gate");
             map.AddLocation(CastleGate, 7, 1);
-
+            Castle castle = new Castle("Castle");
+            map.AddLocation(castle, 9, 1);
             InnerCastleRoad innercastleroad = new InnerCastleRoad("Inner Castle Road");
             map.AddLocation(innercastleroad, 8, 1);
 
@@ -215,6 +216,10 @@ namespace TextAdventureCS
                         case "Climb over the wall":
                             map.Move("Go North");
                         break;
+
+                        case "Fight the boss":
+
+                        break;
                     }
                 }
             } 
@@ -273,9 +278,15 @@ namespace TextAdventureCS
                 menu.Add("Fight the man");
             }
 
-            if ((map.GetYPosition() == 7 && map.GetXPosition() == 1) && angryman.IsAlive(angryman.GetHealth()))
+            if (map.GetYPosition() == 7 && map.GetXPosition() == 1)
             { 
                 menu.Add("Climb over the wall");
+                menu.Remove("Go North");
+            }
+
+            if (map.GetYPosition() == 7 && map.GetXPosition() == 1)
+            {
+                menu.Add("Fight the Boss");
             }
 
             menu.Add( ACTION_QUIT );
