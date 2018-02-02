@@ -46,6 +46,7 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Actors\AngryMan.cs" />
     <Compile Include="Actors\BloodDrake.cs" />
+    <Compile Include="Actors\CastleBoss.cs" />
     <Compile Include="Actors\Rik.cs" />
     <Compile Include="FightUI.cs" />
     <Compile Include="Items\BrassKnuckles.cs" />
