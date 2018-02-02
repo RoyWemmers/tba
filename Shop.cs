@@ -36,7 +36,7 @@ namespace TextAdventureCS
             Console.WriteLine("Rik: 'Welcome to my shop!'");
             Console.WriteLine("Rik: 'Here you can buy anything you see below!'");
             Console.WriteLine("{0}) {1} {2}",1 ,healthpotion[1], healthpotion[2]);
-            Console.WriteLine("2) Go back to Main Road");
+            Console.WriteLine("2) Make Rik go away!");
 
             do
             {

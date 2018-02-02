@@ -7,30 +7,32 @@ namespace TextAdventureCS
 {
     class FightUI
     {
-        const string ACTION_BASIC = "";
+        const string ACTION_BASICATTACK = "Basic Attack";
+        const string ACTION_PUNCH = "Punch";
+        const string ACTION_KICK = "Kick";
 
         public FightUI()
         {
 
         }
 
-        public int ShowFightUI(ref Player player)
+        public int ShowFightUI(ref Player player, ref Map map)
         {
             int damage;
             Program.HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina(), player.GetGold());
-            damage = FightMenu(ref player);
+            damage = FightMenu(ref player, ref map);
             return damage;
         }
 
-        public int FightMenu(ref Player player)
+        public int FightMenu(ref Player player, ref Map map)
         {
             string input;
             int choice;
             int damage = 0;
             List<string> menu = new List<string>();
-            menu.Add("Basic Attack");
-            menu.Add("Punch");
-            menu.Add("Kick");
+            menu.Add(ACTION_BASICATTACK);
+            menu.Add(ACTION_PUNCH);
+            menu.Add(ACTION_KICK);
 
             do
             {
@@ -53,20 +55,22 @@ namespace TextAdventureCS
 
             switch(menu[choice])
             {
-                case "Basic Attack":
+                case ACTION_BASICATTACK:
                     damage = player.BasicAttack(ref player, 0);
                     Console.WriteLine("You have dealt {0} damage!", damage);
                     return damage;
-                case "Punch":
+                case ACTION_PUNCH:
                     damage = player.Punch(ref player, 0);
                     Console.WriteLine("You have dealt {0} damage!", damage);
                     return damage;
-                case "Kick":
+                case ACTION_KICK:
                     damage = player.Kick(ref player, 0);
                     Console.WriteLine("You have dealt {0} damage!", damage);
                     return damage;
             }
             return damage;
         }
+
+
     }
 }

@@ -71,7 +71,7 @@ namespace TextAdventureCS
             }           
 
             // Make the player
-            Player player = new Player(name, 100, 100);
+            Player player = new Player(name, 100, 200);
             //Welcome the player
             Welcome(ref player);
 
@@ -182,7 +182,7 @@ namespace TextAdventureCS
 
                         case "Fight the Blood Drake":
                             Console.Clear();
-                            blooddrake.StartEncouter(ref player);
+                            blooddrake.StartEncouter(ref player, ref map);
                             Console.ReadLine();
                             map.Move("Go North");
                         break;
@@ -202,7 +202,7 @@ namespace TextAdventureCS
 
                         case "Fight the man":
                             Console.Clear();
-                            angryman.StartEncounter(ref player);
+                            angryman.StartEncounter(ref player, ref map);
                             Console.ReadLine();
                         break;
 

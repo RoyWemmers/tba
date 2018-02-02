@@ -18,7 +18,7 @@ namespace TextAdventureCS
             health -= damage;
         }
 
-        public void StartEncounter(ref Player player)
+        public void StartEncounter(ref Player player, ref Map map)
         {
             Console.WriteLine("The Angry Man Attacks!");
             do
@@ -26,7 +26,7 @@ namespace TextAdventureCS
                 Program.HealthUI("Angry Man", health, maxHealth, stamina, maxStamina, 10);
                 CastAbility(ref player);
                 FightUI fui = new FightUI();
-                health -= fui.ShowFightUI(ref player);
+                health -= fui.ShowFightUI(ref player, ref map);
                 Console.Clear();
             } while (health > 1);
             Console.WriteLine("The angry man is knocked down..");
@@ -36,6 +36,8 @@ namespace TextAdventureCS
             Console.Clear();
             Console.WriteLine("Congrats! You've killed an innocent man in his own house!");
             Console.WriteLine("");
+            player.SetGold(20);
+            Console.WriteLine("You stole 20 gold from the man!");
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
 

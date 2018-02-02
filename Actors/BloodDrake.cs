@@ -18,7 +18,7 @@ namespace TextAdventureCS
             health -= damage;
         }
 
-        public void StartEncouter(ref Player player)
+        public void StartEncouter(ref Player player, ref Map map)
         { 
             Console.WriteLine("The Blood Drake Attacks!");
             do
@@ -26,7 +26,7 @@ namespace TextAdventureCS
                 Program.HealthUI("Blood Drake", health, maxHealth, stamina, maxStamina, 10);
                 CastAbility(ref player);
                 FightUI fui = new FightUI();
-                health -= fui.ShowFightUI(ref player);
+                health -= fui.ShowFightUI(ref player, ref map);
                 Console.Clear();
             } while (health > 1);
             Console.WriteLine("The Blood Drake falls down from the sky!");

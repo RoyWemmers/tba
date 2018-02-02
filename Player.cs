@@ -196,6 +196,18 @@ namespace TextAdventureCS
             inventory.Remove(name);
         }
 
+        public bool Run(int choice)
+        {
+            if(choice == 4)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+            
+        }
+
         public bool IsAlive()
         {
             if (health <= 0)
