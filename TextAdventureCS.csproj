@@ -46,13 +46,13 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Actors\AngryMan.cs" />
     <Compile Include="Actors\BloodDrake.cs" />
+    <Compile Include="Actors\CastleBoss.cs" />
     <Compile Include="Actors\Rik.cs" />
     <Compile Include="FightUI.cs" />
     <Compile Include="Items\BrassKnuckles.cs" />
     <Compile Include="Items\HealthPotion.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Locations\Bridge.cs" />
-    <Compile Include="Locations\Castle.cs" />
     <Compile Include="Locations\CastleGate.cs" />
     <Compile Include="Locations\Forest.cs" />
     <Compile Include="Locations\House.cs" />
