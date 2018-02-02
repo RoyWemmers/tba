@@ -55,7 +55,7 @@ namespace TextAdventureCS
             choice -= 1;
 
             switch(menu[choice])
-            {
+            { 
                 case "Basic Attack":
                     damage = player.BasicAttack(ref player, 0);
                     Console.WriteLine("You have dealt {0} damage!", damage);
