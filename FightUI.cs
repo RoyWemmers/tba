@@ -7,7 +7,10 @@ namespace TextAdventureCS
 {
     class FightUI
     {
-        const string ACTION_BASIC
+        const string ACTION_BASICATTACK = "Basic Attack";
+        const string ACTION_PUNCH = "Punch  Cost: 30 Stamina";
+        const string ACTION_KICK = "Kick    Cost: 30 Stamina";
+
 
         public FightUI()
         {
