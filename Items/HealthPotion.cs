@@ -19,7 +19,12 @@ namespace TextAdventureCS
 
         public void UsePotion(ref Player player)
         {
-            player.SetHealth(-10);
+            player.SetHealth(-50);
+            player.DelItemInvenyory("Health Potion");
+            if (player.GetHealth() > 100)
+            {
+                player.SetHealth(-(player.GetMaxHealth()-player.GetHealth()));
+            }
         }
     }
 }

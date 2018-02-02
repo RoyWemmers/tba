@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace TextAdventureCS
 {
@@ -39,8 +40,16 @@ namespace TextAdventureCS
         public void PickupItem(Objects obj)
         {
             // Add an if-statement here when you want to have a maximum number of items
-            inventory.Add(obj.GetName(), obj);
-            obj.SetIsAcquirable(false);
+            if(HasObject(obj.GetName()))
+            {
+                Console.WriteLine("You already carry the maximum amount of this item");
+                gold += 1;
+            } else
+            {
+                inventory.Add(obj.GetName(), obj);
+                obj.SetIsAcquirable(false);
+            }
+           
         }
 
         public void ShowInventory()
@@ -108,11 +117,60 @@ namespace TextAdventureCS
 
         public int BasicAttack(ref Player player, int bonusDamage)
         {
-            int damage = 4 + bonusDamage;
+            if (player.GetStamina() <= 0)
+            {
+                Console.WriteLine("You don't have enough mana!");
+                Console.ReadLine();
+                player.SetStamina(player.GetStamina());
+            } else
+            {
+                int damage = 4 + bonusDamage;
 
-            player.SetStamina(2);
+                player.SetStamina(2);
 
-            return damage;
+                return damage;
+            }
+            return 0;
+        }
+
+        public int Punch(ref Player player, int bonusDamage)
+        {
+
+            if (player.GetStamina() <= 0)
+            {
+                Console.WriteLine("You don't have enough mana!");
+                Console.ReadLine();
+                player.SetStamina(player.GetStamina());
+            }
+            else
+            {
+                int damage = 6 + bonusDamage;
+
+                player.SetStamina(5);
+
+                return damage;
+            }
+            return 0;
+        }
+
+        public int Kick(ref Player player, int bonusDamage)
+        {
+
+            if (player.GetStamina() <= 0)
+            {
+                Console.WriteLine("You don't have enough mana!");
+                Console.ReadLine();
+                player.SetStamina(player.GetStamina());
+            }
+            else
+            {
+                int damage = 10 + bonusDamage;
+
+                player.SetStamina(10);
+
+                return damage;
+            }
+            return 0;
         }
 
         public void ClimbBridge(ref Player player)
@@ -132,7 +190,23 @@ namespace TextAdventureCS
                 Console.WriteLine("The side of the Bridge is really slippery!");
                 Console.WriteLine("Luckly you made it without a scratch!");
             }
+        }
+        public void DelItemInvenyory(string name)
+        {
+            inventory.Remove(name);
+        }
 
+        public bool IsAlive()
+        {
+            if (health <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        public void ResetStamina(ref Player player)
+        {
+            player.SetStamina(-(player.GetMaxStamina() - player.GetStamina()));
         }
 
         public float GetGold()

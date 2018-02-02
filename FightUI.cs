@@ -15,7 +15,7 @@ namespace TextAdventureCS
         public int ShowFightUI(ref Player player)
         {
             int damage;
-            Program.HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina());
+            Program.HealthUI(player.GetName(), player.GetHealth(), player.GetMaxHealth(), player.GetStamina(), player.GetMaxStamina(), player.GetGold());
             damage = FightMenu(ref player);
             return damage;
         }
@@ -27,9 +27,17 @@ namespace TextAdventureCS
             int damage = 0;
             List<string> menu = new List<string>();
             menu.Add("Basic Attack");
+            menu.Add("Punch");
+            menu.Add("Kick");
 
             do
             {
+                if (!player.IsAlive())
+                {
+                    Program.Dead();
+                    return 0;
+                }
+
                 for (int i = 0; i < menu.Count(); i++)
                 {
                     Console.WriteLine("{0} - {1}", i + 1, menu[i]);
@@ -45,6 +53,14 @@ namespace TextAdventureCS
             {
                 case "Basic Attack":
                     damage = player.BasicAttack(ref player, 0);
+                    Console.WriteLine("You have dealt {0} damage!", damage);
+                    return damage;
+                case "Punch":
+                    damage = player.Punch(ref player, 0);
+                    Console.WriteLine("You have dealt {0} damage!", damage);
+                    return damage;
+                case "Kick":
+                    damage = player.Kick(ref player, 0);
                     Console.WriteLine("You have dealt {0} damage!", damage);
                     return damage;
             }

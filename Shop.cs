@@ -33,7 +33,8 @@ namespace TextAdventureCS
         public void BuyShop(ref Player player, ref object[] healthpotion, ref List<object> shop, ref HealthPotion hp)
         {
             string input;
-            Console.WriteLine("Shop: ");
+            Console.WriteLine("Rik: 'Welcome to my shop!'");
+            Console.WriteLine("Rik: 'Here you can buy anything you see below!'");
             Console.WriteLine("{0}) {1} {2}",1 ,healthpotion[1], healthpotion[2]);
             Console.WriteLine("2) Go back to Main Road");
 
@@ -51,10 +52,16 @@ namespace TextAdventureCS
 
         public void BuyHealthPotion(ref Player player, ref HealthPotion hp)
         {
+            if (player.GetGold() > 10)
+            {
+                player.SetGold(-10);
+                player.PickupItem(hp);
+                player.ShowInventory();
+            } else
+            {
+                Console.WriteLine("You don't have enough gold!");
+            }
             
-            player.SetGold(-1);
-            player.PickupItem(hp);
-            player.ShowInventory();
         }
     }
 }

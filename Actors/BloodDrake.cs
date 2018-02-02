@@ -23,7 +23,7 @@ namespace TextAdventureCS
             Console.WriteLine("The Blood Drake Attacks!");
             do
             {
-                Program.HealthUI("Blood Drake", health, maxHealth, stamina, maxStamina);
+                Program.HealthUI("Blood Drake", health, maxHealth, stamina, maxStamina, 10);
                 CastAbility(ref player);
                 FightUI fui = new FightUI();
                 health -= fui.ShowFightUI(ref player);
@@ -33,6 +33,9 @@ namespace TextAdventureCS
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("Congrats! You've defeated the Blood Drake!");
+            player.SetGold(10);
+            player.SetStamina(-player.GetMaxStamina());
+            Console.WriteLine("You get 10G loot!");
             
         }
 
