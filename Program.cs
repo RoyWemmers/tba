@@ -35,7 +35,7 @@ namespace TextAdventureCS
         const string ACTION_FIGHT = "Fight";
         const string ACTION_RUN = "Run";
         const string ACTION_QUIT = "Exit";
-        const string ACTION_SHOP = "Call Rik for Shop";
+        const string ACTION_SHOP = "Blow the wooden whistle";
         const string ACTION_SHOWINVENTORY = "Show Inventory";
         const string ACTION_USEHEALTHPOTION = "Use Health Potion";
 

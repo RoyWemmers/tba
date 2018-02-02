@@ -41,7 +41,7 @@ namespace TextAdventureCS
 
             Console.WriteLine("After you took the man's money you decide to look search his house for usefull stuff.");
             player.SetGold(20);
-            Console.WriteLine("As you scavenge around the house you find a pair of brass knuckles!");
+            Console.WriteLine("As you scavenge around the house you find a bag of gold containing 20 gold coins!");
             
         }
 
