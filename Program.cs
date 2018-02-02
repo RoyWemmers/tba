@@ -135,6 +135,7 @@ namespace TextAdventureCS
             Rik rik = new Rik("Rik", 10000, 10000);
             BloodDrake blooddrake = new BloodDrake("Blood Drake", 50, 10);
             AngryMan angryman = new AngryMan("Angry Man", 70, 10);
+            CastleBoss castleboss = new CastleBoss("Castle Boss,",100, 10);
             List<string> menuItems = new List<string>();
             int choice;
 
@@ -145,7 +146,7 @@ namespace TextAdventureCS
             {
                 Console.Clear();
                 map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake, ref angryman);
+                choice = ShowMenu(map, ref menuItems, ref player, ref blooddrake, ref angryman, ref castleboss);
 
                 if ( choice != menuItems.Count() )
                 {
@@ -228,7 +229,7 @@ namespace TextAdventureCS
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake, ref AngryMan angryman)
+        static int ShowMenu(Map map, ref List<string> menu, ref Player player, ref BloodDrake drake, ref AngryMan angryman, ref CastleBoss castleboss)
         {
             int choice;
             string input;
