@@ -53,7 +53,6 @@
     <Compile Include="Items\HealthPotion.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Locations\Bridge.cs" />
-    <Compile Include="Locations\Castle.cs" />
     <Compile Include="Locations\CastleGate.cs" />
     <Compile Include="Locations\Forest.cs" />
     <Compile Include="Locations\House.cs" />
