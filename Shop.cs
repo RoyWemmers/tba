@@ -41,13 +41,16 @@ namespace TextAdventureCS
             do
             {
                 input = Console.ReadLine();
+                if(input != "1" && input != "2")
+                {
+                    Console.WriteLine("Please select a number between 1 and 2");
+                }
             } while (input != "1" && input != "2");
 
             if (input == "1")
             {
                 BuyHealthPotion(ref player, ref hp);
-            }
-
+            } 
         }
 
         public void BuyHealthPotion(ref Player player, ref HealthPotion hp)

@@ -166,7 +166,7 @@ namespace TextAdventureCS
             {
                 int damage = 10 + bonusDamage;
 
-                player.SetStamina(10);
+                player.SetStamina(30);
 
                 return damage;
             }
