@@ -7,7 +7,7 @@ namespace TextAdventureCS
 {
     class FightUI
     {
-        const string ACTION_BASIC
+        const string ACTION_BASIC = "";
 
         public FightUI()
         {
